@@ -16,6 +16,8 @@ const handler = NextAuth({
         const username = credentials?.username;
         const password = credentials?.password;
 
+          console.log(username);
+          
         //these username and password are send to db , 
         const user = { 
           id: "1", 
