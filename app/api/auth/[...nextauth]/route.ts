@@ -12,7 +12,16 @@ const handler = NextAuth({
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials, req) {
-        const user = { id: "1", name: "J Smith", email: "jsmith@example.com" }
+
+        const username = credentials?.username;
+        const password = credentials?.password;
+
+        //these username and password are send to db , 
+        const user = { 
+          id: "1", 
+          name: "J Smith", 
+          email: "jsmith@example.com" 
+        }
   
         if (user) {
           return user
