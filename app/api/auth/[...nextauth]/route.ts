@@ -1,6 +1,9 @@
 
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
+import GitHubProvider from "next-auth/providers/github";
+
 
 const handler = NextAuth({
 
@@ -8,8 +11,8 @@ const handler = NextAuth({
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        username: { label: "Username", type: "text", placeholder: "jsmith" },
-        password: { label: "Password", type: "password" }
+        username: { label: "Username", type: "text", placeholder: "sharad" },
+        password: { label: "Password", type: "password",placeholder: "--------" }
       },
       async authorize(credentials, req) {
 
@@ -31,8 +34,21 @@ const handler = NextAuth({
           return null
         }
       } 
-    }) 
+    }) ,
+
+
+    GoogleProvider({
+      clientId: "asd",
+      clientSecret: "asd"
+    }),
+
+    GitHubProvider({
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET
+    })
   ]
+
+
 })
 
 export { handler as GET , handler as POST }
