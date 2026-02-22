@@ -3,11 +3,12 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
+import { Session } from "inspector/promises";
 
 
 const handler = NextAuth({
 
-  providers:[
+    providers:[
     CredentialsProvider({
       name: "Credentials",
       credentials: {
@@ -28,8 +29,8 @@ const handler = NextAuth({
           email: "jsmith@example.com" 
         }
   
-        if (user) {
-          return user
+        if (username=="sharad" && password=="sh@r@d12345") {
+          return user;
         } else {
           return null
         }
@@ -38,13 +39,13 @@ const handler = NextAuth({
 
 
     GoogleProvider({
-      clientId: "asd",
+      clientId: "sharadiit03@gmail.com",
       clientSecret: "asd"
     }),
 
     GitHubProvider({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET
+      clientId: process.env.GITHUB_ID!,
+      clientSecret: process.env.GITHUB_SECRET!
     })
   ]
 
